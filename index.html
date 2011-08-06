@@ -21,10 +21,31 @@
 		
 		<script src="assets/js/app.js" type="text/javascript" charset="utf-8"></script>
 		
+	 	<script type="text/javascript" charset="utf-8">
+	
+		    // Wait for PhoneGap to load
+		    //
+		    document.addEventListener("deviceready", onDeviceReady, false);
+		
+		    // PhoneGap is ready
+		    //
+		    function onDeviceReady() {
+		        var element = document.getElementById('deviceProperties');
+		
+		        element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
+		                            'Device PhoneGap: ' + device.phonegap + '<br />' + 
+		                            'Device Platform: ' + device.platform + '<br />' + 
+		                            'Device UUID: '     + device.uuid     + '<br />' + 
+		                            'Device Version: '  + device.version  + '<br />';
+		    }
+	
+	    </script>		
 	</head>
 	<body>
+	 	<p id="deviceProperties">Loading device properties...</p>
+	 	
  		<div id="title_bar">Phone<strong>Gap</strong> Training App</div>
-
+	
 		<div id="welcome" class="view">
 		  <div class="app_button" id="map_button">Show My Location</div>
   	      <div class="app_button" id="settings_button">Settings</div>
@@ -40,12 +61,14 @@
 
 		<div id="settings" class="view">
 		  <form id="settings_form">
-		    <fieldset>
+		    <fieldset >
 		      <legend>Map Type</legend>
+		      <div align="left">
 			  <input type="radio" name="map" value="roadmap" checked>Road Map<br/>
 		      <input type="radio" name="map" value="satellite">Satellite<br/>
 		      <input type="radio" name="map" value="terrain">Terrain<br/>
 		      <input type="radio" name="map" value="hybrid">Hybrid<br/>
+		      </div>
 		    </fieldset>
 		    <fieldset>
 		      <legend>Zoom Level</legend>
